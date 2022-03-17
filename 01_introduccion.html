@@ -1,0 +1,594 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+
+<title>Introducción</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<!-- General and theme style sheets -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/css/reveal.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/css/theme/white.css" id="theme">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/lib/css/zenburn.css">
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+}
+
+</script>
+
+<!--[if lt IE 9]>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/lib/js/html5shiv.js"></script>
+<![endif]-->
+
+<!-- Loading the mathjax macro -->
+<!-- Load mathjax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+            processEscapes: true,
+            processEnvironments: true
+        },
+        // Center justify equations in code and markdown cells. Elsewhere
+        // we use CSS to left justify single line equations in code cells.
+        displayAlign: 'center',
+        "HTML-CSS": {
+            styles: {'.MathJax_Display': {"margin": 0}},
+            linebreaks: { automatic: false }
+        }
+    });
+    </script>
+    <!-- End of mathjax configuration -->
+
+<!-- Get Font-awesome from cdn -->
+<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">-->
+
+
+        <style type="text/css">
+            .container{
+                        display: flex;
+                      }
+            .col{
+                      flex: 1;
+                }
+            .reveal section p {
+                      display: inline-block;
+                      font-size: 0.6em;
+                      line-height: 1.2em;
+                      vertical-align: top;
+                      text-align: left;
+            }
+            .reveal section li {
+                      font-size: 0.6em;
+            }
+            .reveal section img {
+                      border: none;
+            }
+        </style>
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+                <section><h1>Inteligencia Artificial</h1>
+                </section>
+
+                <section><h2>Presentación</h2>
+                <ul><li>Mi correo: graeme.candlish@uv.cl</li>
+                    <li>Horario: martes 10.15-11.15, jueves 10.15-11.15.</li>
+                </section>
+
+                <section><h2>Bibliografía</h2>
+                <ul><li><i>Hands-On Machine Learning with Scikit-Learn, Keras and Tensorflow</i>, Géron</li>
+                    <li><i>Introduction to Machine Learning with Python</i>, Müller & Guido</li>
+                    <li><i>An Introduction to Statistical Learning with Applications in R</i>, James, Witten, Hastie, Tibshirani</li></ul>
+                    <p>Todos disponibles en el Classroom</p>
+                </section>
+
+                <section><h2>Resultados de aprendizaje</h2>
+                     <ul><li>Asignatura teórico / práctica, de modalidad presencial, y con evaluación basada en proyectos/tareas.</li>
+                         <li>Tiene como finalidad entender los principios detrás de la clasificación supervisada y no supervisada, el entrenamiento y testeo de algoritmos y las implicaciones de las métricas usadas en los procesos de optimización y toma de decisiones.</li></ul>
+                </section>
+
+                <section><h2>Contenido</h2>
+                <p><ul><li>Introducción a <i>machine learning</i></li>
+                       <li>Repaso de Python, Jupyter Notebooks</li>
+                       <li>Clasificación</li>
+                       <li>Entrenamiento de los modelos</li>
+                       <li>Support vector machines</li>
+                       <li>Árboles de decisión</li>
+                       <li>Random forests</li>
+                       <li>Reducción de dimensionalidad</li>
+                       <li>Aprendizaje no supervisado</li>
+                       <li>Intro a redes neuronales y <i>deep learning</i></ul>
+                </section>
+
+                <section><h2>Evaluaciones</h2>
+                         <ul><li>4 Tareas, de la misma ponderación</li>
+                             <li>Tarea 1: clasificación</li>
+                             <li>Tarea 2: entrenamiento, SVMs</li>
+                             <li>Tarea 3: random forest, PCA</li>
+                             <li>Tarea 4: RNs, Keras, MLP</li></ul>
+                </section>
+
+                <section><h1>Introducción</h1>
+                </section>
+
+		<section><h4>¿Qué es Inteligencia Artificial?</h4>
+                <figure>
+                <p><img src="artificial-intelligence-terms.jpg" height=500></p>
+                <figcaption><small>Fuente: simplecore.intel.com</small></figcaption>
+                </figure>
+                </section>
+
+                <section><h4>Usos de <i>machine learning</i></h4>
+                <figure>
+                <p><img src="machine-learning1.png" height=500></p>
+                <figcaption><small>Fuente: 7wdata.be</small></figcaption>
+                </figure>
+                </section>
+
+                <section><h4>Usos de <i>machine learning</i></h4>
+                <figure>
+                <p><img src="applications_ml.png" height=500></p>
+                <figcaption><small>Fuente: javatpoint.com</small></figcaption>
+                </figure>
+                </section>
+
+                <section><h4>Usos de <i>machine learning</i> en la ciencia</h4>
+                <figure>
+                <p><img src="science_use_case_spider.png" height=500></p>
+                <figcaption><small>Fuente: nersc.gov</small></figcaption>
+                </figure>
+                </section>
+
+                <section><h4>¿Qué es <i>machine learning</i>?</h4>
+                <p>Proceso tradicional:</p>
+                <figure>
+                <p><img src="fig1-1.png" height=400></p>
+                </figure>
+                </section>
+
+                <section><h4>¿Qué es <i>machine learning</i>?</h4>
+                <p>Proceso de <i>machine learning</i>:</p>
+                <figure>
+                <p><img src="fig1-2.png" height=400></p>
+                </figure>
+                </section>
+
+                <section><h4>¿Qué es <i>machine learning</i>?</h4>
+                <figure>
+                <p><img src="rules_answers_data.jpg" height=400></p>
+                </figure>
+                </section>
+
+                <section><h4>Ventajas de <i>machine learning</i></h4>
+                <figure>
+                <p><img src="fig1-3.png" height=400></p>
+                </figure>
+                </section>
+
+                <section><h4>Ventajas de <i>machine learning</i></h4>
+                <p><i>Data mining</i>:</p>
+                <figure>
+                <p><img src="fig1-4.png" height=400></p>
+                </figure>
+                </section>
+
+                <section>
+                <p><i>Machine learning</i> es más apto para:</p>
+                <ul><li class="fragment">Problemas donde la solución requiere una lista larga de reglas.</li>
+                    <li class="fragment">Problemas complejos donde no hay una solución buena.</li>
+                    <li class="fragment">Situaciones donde hay que adaptar a nueva información.</li>
+                    <li class="fragment">Entender mejor problemas complejos y grandes cantidades de datos.</li></ul>
+                </section>
+
+                <section><h4>Tipos de <i>machine learning</i></h4>
+                <p>Hay varias categorías de modelos de <i>machine learning</i>:
+                <ul><li class="fragment">Supervisado, no supervisado, semisupervisado, aprendizaje por refuerzo</li>
+                    <li class="fragment"><i>Online</i> o <i>batch</i>.</li>
+                    <li class="fragment">Basado en instancias o un modelo.</li></ul>
+                </section>
+
+                <section><h4>Aprendizaje supervisado: classificación</h4>
+                <figure>
+                <p><img src="fig1-5.png" height=400></p>
+                </figure>
+                </section>
+
+                <section><h4>Aprendizaje supervisado: regresión</h4>
+                <figure>
+                <p><img src="fig1-6.png" height=400></p>
+                </figure>
+                </section>
+
+                <section><h4>Aprendizaje supervisado: ejemplos</h4>
+                <ul><li class="fragment"><i>k-Nearest neighbours</i></li>
+                    <li class="fragment">Regresión lineal</li>
+                    <li class="fragment">Regresión logística</li>
+                    <li class="fragment">Maquinas de soporte vectorial (<i>support vector machines</i>)</li>
+                    <li class="fragment">Árboles de decisión y <i>random forests</i></li>
+                    <li class="fragment">Redes neuronales</li></ul>
+                </section>
+
+                <section><h4>Aprendizaje no supervisado</h4>
+                <figure>
+                <p><img src="fig1-7.png" height=400></p>
+                </figure>
+                </section>
+
+                <section><h4>Aprendizaje no supervisado: ejemplos</h4>
+                <ul><li class="fragment"><i>Clustering:</i></li>
+                <ul><li class="fragment"><i>k-Means</i></li>
+                    <li class="fragment">DBSCAN</li>
+                    <li class="fragment"><i>Heirarchical Cluster Analysis</i> (HCA)</li></ul>
+                    <li class="fragment"><i>Detección de anomalías</i>:</li>
+                <ul><li class="fragment"><i>One-class SVM</i></li>
+                    <li class="fragment"><i>Isolation Forest</i></li></ul>
+                    <li class="fragment">Visualización y reducción de dimensionalidad</li>
+                <ul><li class="fragment"><i>Principal Component Analysis</i> (PCA)</li>
+                    <li class="fragment"><i>Kernel PCA</i></li>
+                    <li class="fragment"><i>Locally-Linear Embedding</i> (LLE)</li>
+                    <li class="fragment"><i>t-distributed Stochastic Neighbour Embedding</i></li></ul>
+                    <li class="fragment">Aprendizaje de reglas de asociación</li>
+                <ul><li class="fragment"><i>Apriori</i></li>
+                    <li class="fragment"><i>Eclat</i></li></ul></ul>
+                </section>
+
+                <section><h4>Aprendizaje no supervisado: <i>clustering</i></h4>
+                <figure>
+                <p><img src="fig1-8.png" height=400></p>
+                </figure>
+                </section>
+
+                <section><h4>Aprendizaje no supervisado: visualización</h4>
+                <figure>
+                <p><img src="fig1-9.png" height=400></p>
+                <figcaption><small>Visualización de t-SNE</small></figcaption>
+                </figure>
+                </section>
+
+                <section><h4>Aprendizaje no supervisado: detección de anomalías</h4>
+                <figure>
+                <p><img src="fig1-10.png" height=400></p>
+                </figure>
+                </section>
+
+                <section><h4>Aprendizaje semi-supervisado</h4>
+                <figure>
+                <p><img src="fig1-11.png" height=400></p>
+                </figure>
+                </section>
+
+                <section><h4>Aprendizaje por refuerzo</h4>
+                <figure>
+                <p><img src="fig1-12.png" height=400></p>
+                </figure>
+                </section>
+
+                <section><h4>Otra clasificación: <i>batch</i> u <i>online</i></h4>
+                <ul><li class="fragment"><i>Batch</i>: el sistema está entrenado usando todos los datos de entrenamiento.</li>
+                    <li class="fragment"><i>Online</i>: el sistema está entrenado en una forma incremental, usando los datos uno por uno, o con <i>mini-batches</i>.</li></ul>
+                </section>
+
+                <section><h4>Aprendizaje <i>online</i></h4>
+                <figure>
+                <p><img src="fig1-13.png" height=400></p>
+                </figure>
+                </section>
+
+                <section><h4>Aprendizaje <i>online</i> para datos masivos</h4>
+                <figure>
+                <p><img src="fig1-14.png" height=400></p>
+                </figure>
+                </section>
+
+                <section><h4>Otra clasificación: basado en instancias o un modelo</h4>
+                <ul><li class="fragment"><i>Instancias</i>: el sistema compara un nuevo dato con los datos ya aprendidos.</li>
+                    <li class="fragment"><i>Modelo</i>: el sistema construye un modelo usando los datos, y realiza predicciones basado en ese modelo.</li></ul>
+                </section>
+
+                <section><h4>Aprendizaje basado en instancias</h4>
+                <figure>
+                <p><img src="fig1-15.png" height=400></p>
+                </figure>
+                </section>
+
+                <section><h4>Aprendizaje basado en un modelo</h4>
+                <figure>
+                <p><img src="fig1-16.png" height=400></p>
+                </figure>
+                </section>
+
+                <section><h4>Aprendizaje basado en un modelo: ejemplo</h4>
+                <figure>
+                <p><img src="table1-1.png" height=400></p>
+                <figcaption><small>Datos de la OECD</small></figcaption> 
+                </figure>
+                </section>
+
+                <section><h4>Aprendizaje basado en un modelo: ejemplo</h4>
+                <figure>
+                <p><img src="fig1-17.png" height=400></p>
+                </figure>
+                </section>
+
+                <section><h4>Aprendizaje basado en un modelo: ejemplo</h4>
+                <p>Usamos un modelo lineal: $L = \theta_0 + \theta_1 x$ donde $x$ es PIB (GDP en inglés) y $L$ es "satisfacción de vida". Este modelo también se llama regresión lineal.</p>
+                <p>Hay dos <b>parámetros</b> en el modelo: $\theta_0$ y $\theta_1$.</p>
+                </section>
+
+                <section><h4>Aprendizaje basado en un modelo: ejemplo</h4>
+                <figure>
+                <p><img src="fig1-18.png" height=400></p>
+                <figcaption><small>Posibles modelos (cambiando los valores de $\theta_0$ y $\theta_1$)</small></figcaption> 
+                </figure>
+                </section>
+
+                <section><h4>Aprendizaje basado en un modelo: ejemplo</h4>
+                <ul><li class="fragment">Para usar el modelo, necesitamos definir los valores de $\theta_0$ y $\theta_1$.</li>
+                    <li class="fragment">Queremos medir la calidad del ajuste del modelo, es decir, saber si el modelo es bueno o malo.</li>
+                    <li class="fragment"><b>Función de utilidad</b>: una medida de lo bueno que es el modelo.</li>
+                    <li class="fragment"><b>Función de costo</b>: una medida de lo malo que es el modelo.</li></ul>
+                </section>
+
+                <section><h4>Aprendizaje basado en un modelo: ejemplo</h4>
+                <ul><li class="fragment">Para regresión lineal usamos una función de costo</li>
+                    <li class="fragment">En detalles, la función es una medida de la distancia entre el modelo (la línea) y los datos (las instancias): $$F = \sum_{i=1}^N (y_i - \hat{y}_i)^2$$</li>
+                    <li class="fragment">Encontrar los valores óptimos de $\theta_0$ y $\theta_1$ corresponde a <b>minimizar</b> la función de costo.</li>
+                    <li class="fragment">El proceso de encontrar los valores óptimos de $\theta_0$ y $\theta_1$ se llama <b>entrenamiento</b> del modelo.</li></ul>
+                </section>
+
+                <section><h4>Aprendizaje basado en un modelo: ejemplo</h4>
+                <figure>
+                <p><img src="fig1-19.png" height=400></p>
+                <figcaption><small>Línea de mejor ajuste</small></figcaption> 
+                </figure>
+                </section>
+
+                <section><h4>Aprendizaje basado en un modelo: ejemplo</h4>
+                <pre><code class="language-python">import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+import sklearn.linear_model
+
+# Load the data
+oecd_bli = pd.read_csv("oecd_bli_2015.csv", thousands=',')
+gdp_per_capita = pd.read_csv("gdp_per_capita.csv",thousands=',',delimiter='\t', encoding='latin1', na_values="n/a")
+
+# Prepare the data
+country_stats = prepare_country_stats(oecd_bli, gdp_per_capita)
+X = np.c_[country_stats["GDP per capita"]]
+y = np.c_[country_stats["Life satisfaction"]]
+
+# Visualize the data
+country_stats.plot(kind='scatter', x="GDP per capita", y='Life satisfaction')
+plt.show()
+
+# Select a linear model
+model = sklearn.linear_model.LinearRegression()
+
+# Train the model
+model.fit(X, y)
+
+# Make a prediction for Cyprus
+X_new = [[22587]] # Cyprus' GDP per capita
+print(model.predict(X_new)) 
+
+# outputs [[ 5.96242338]]</code></pre>
+                </section>
+
+                <section><h4>Aprendizaje basado en instancias: ejemplo</h4>
+                <ul><li class="fragment">En vez de construir un modelo (en este caso con regresión lineal) podemos simplemente encontrar la(s) instancia(s) más cercana(s) a la nueva instancia.</li>
+                    <li class="fragment">Para estos datos, <i>Slovenia</i> es la instancia más cercana a <i>Cyprus</i>.</li>
+                    <li class="fragment">Así que predecimos (con este método) un "life satisfaction" de $5.7$ (igual a <i>Slovenia</i>).</li>
+                    <li class="fragment">Considerando las 3 instancias más cercanas tenemos <i>Portugal</i>, <i>Spain</i> y <i>Slovenia</i>.</li>
+                    <li class="fragment">El promedio de los 3 paises es $5.77$. Este algoritmo se llama <i>k-Nearest neighbours</i> con $k=3$.</li></ul>
+                </section>
+
+                <section><h4>Aprendizaje basado en instancias: ejemplo</h4>
+                <pre><code class="language-python">...
+#import sklearn.linear_model
+import sklearn.neighbors
+...
+#model = sklearn.linear_model.LinearRegression()
+model = sklearn.neighbors.KNeighborsRegressor(n_neighbors=3)
+...</code></pre>
+                </section>
+
+                <section><h4>Desafios de <i>machine learning</i></h4>
+                <p>Dos posibles problemas principales:</p><br>
+                <ul><li class="fragment">Algoritmo malo</li>
+                    <li class="fragment">Datos malos</li></ul>
+                </section>
+
+                <section><h4>Problemas con datos</h4>
+                <p>Cantidad insuficiente de datos</p>
+                <figure>
+                <p><img src="fig1-20.png" height=300></p>
+                <figcaption><small>Banko & Brill (2001). Más datos, mejor rendimiento. Pero ojo, hay muchos conjuntos de datos de tamaño "pequeño" (especialmente en ciencia).</small></figcaption> 
+                </figure>
+                </section>
+
+                <section><h4>Problemas con datos</h4>
+                <p>Datos de entrenamiento no representativos (<i>biased data</i>)</p>
+                <figure>
+                <p><img src="fig1-21.png" height=300></p>
+                <figcaption><small>Línea sólida: modelo nuevo; línea discontinua: modelo antiguo</small></figcaption> 
+                </figure>
+                </section>
+
+                <section><h4>Problemas con datos</h4>
+                <p>Datos de entrenamiento no representativos (<i>biased data</i>)<p><br>
+                <ul><li class="fragment">Conjunto de datos demasiado pequeño: <i>sampling noise</i>.</li>
+                    <li class="fragment">Método defectuoso de obtener los datos: <i>sampling bias</i>.</li></ul>
+                </section>
+
+                <section><h4>Problemas con datos</h4>
+                <p>Datos de mala calidad. Muchas veces es necesario limpiar los datos.</p><br>
+                <ul><li class="fragment">Si hay muchos <i>outliers</i> puede ayudar botarlos de la muestra.</li>
+                    <li class="fragment">Instancias que faltan <i>features</i>. Hay que decidir si usamos esos <i>features</i> en el modelo, si reemplazamos por un valor, etc.</li></ul>
+                </section>
+
+                <section><h4>Problemas con datos</h4>
+                <p><i>Features</i> irrelevantes. Un aspecto de <i>machine learning</i> es encontrar <i>features</i> que facilitan la construcción de un modelo que funciona bien.</p><br>
+                <ul><li class="fragment">Selección de <i>features</i>: elegir los <i>features</i> más útiles para el entrenamiento del modelo.</li>
+                    <li class="fragment">Extracción de <i>features</i>: combinar los <i>features</i> que ya existen para construir nuevos <i>features</i>. Por ejemplo, en reducción de dimensionalidad.</li>
+                    <li class="fragment">Crear nuevos <i>features</i> de datos nuevos.</li></ul>
+                </section>
+
+                <section><h4>Problemas con algoritmos</h4>
+                <p><i>Overfitting</i></p>
+                <figure>
+                <p><img src="fig1-22.png" height=400></p>
+                <figcaption><small>Modelo de regresión con un polinomio de grado alto.</small></figcaption> 
+                </figure>
+                </section>
+
+                <section><h4>Problemas con algoritmos</h4>
+                <p><i>Overfitting</i> ocurre cuando el modelo es demasiado complejo dado la cantidad de datos y el ruido en los datos.</p><br>
+                <ul><li class="fragment">Simplificar el modelo: reducir el número de parámetros; reducir el número de atributos en los datos de entrenamiento; restringir el modelo (regularización).</li>
+                    <li class="fragment">Recopilar más datos.</li>
+                    <li class="fragment">Reducir el ruido y los errores en los datos.</li></ul>
+                </section>
+
+                <section><h4>Problemas con algoritmos</h4>
+                <p>Una forma de resolver el problema de <i>overfitting</i> es con <b>regularización</b>. Ejemplo:</p>
+                <ul><li class="fragment">Modelo lineal: $\theta_0$ (altura) y $\theta_1$ (pendiente).</li>
+                    <li class="fragment">Regularización de este modelo correspondería a restringir uno de estos parámetros (o ambos).</li></ul>
+                <figure>
+                <p><img src="fig1-23.png" height=300 class="fragment"></p>
+                </figure>
+                </section>
+
+                <section><h4>Hiperparámetros</h4>
+                <ul><li class="fragment">La cantidad de regularización que aplicamos a un modelo se puede controlar con un <b>hiperparámetro</b>.</li>
+                    <li class="fragment">Un hiperparámetro es un parámetro del <b>algoritmo</b>, no del modelo.</li>
+                    <li class="fragment">Encontrar valores óptimos para los hiperparámetros es un aspecto importante de <i>machine learning</i></li>
+                    <li class="fragment">De hecho, se puede usar algoritmos de <i>machine learning</i> para encontrar los hiperparpametros óptimos de otro algoritmo!</li></ul>
+                </section>
+
+                <section><h4>Problemas con algoritmos</h4>
+                <p><i>Underfitting</i>: el modelo es demasiado simple para representar bien los datos. El modelo lineal de "life satisfaction" es un ejemplo.</p>
+                <ul><li class="fragment">Elegir un modelo más complejo, con más parámetros.</li>
+                    <li class="fragment">Entregar mejores <i>features</i> al algoritmo (<i>feature engineering</i>).</li>
+                    <li class="fragment">Reducir las restricciones en el modelo (e.g. menos regularización).</li></ul>
+                </section>
+
+                <section><h4>Probar y validar el modelo</h4>
+                <ul><li class="fragment">Es buena practica dividir los datos en dos conjuntos: el conjunto de entrenamiento y el conjunto de prueba (<i>test set</i>).</li>
+                    <li class="fragment">El modelo está entrenado con el conjunto de entrenamiento, y se puede probar el modelo usando el conjunto de prueba.</li>
+                    <li class="fragment">La taza de error en los casos nuevos del conjunto de prueba se llama <b>error de generalización</b>.</li>
+                    <li class="fragment">Es común usar 80% de los datos para entrenamiento, 20% para probar el modelo.</li>
+                    <li class="fragment">Si el error en los datos de entrenamiento es bajo, pero el error de generalización es alto $\Rightarrow$ <span style="color:red"><i>overfitting</i></span></li></ul></ul>
+                </section>
+
+                <section><h4>Selección de modelo, ajuste de hiperparámetros</h4>
+                <ul><li class="fragment">Es muy común usar una parte del conjunto de entrenamiento como conjunto de <b>validación</b>.</li>
+                    <li class="fragment">La idea es: entrenar varios modelos (con distintos hiperparámetros) en el conjunto reducido de entrenamiento.</li>
+                    <li class="fragment">Elegir el modelo con mejor rendimiento en el conjunto de validación.</li>
+                    <li class="fragment">Entrenar el mejor modelo en el conjunto total de entrenamiento (incluyendo el conjunto de validación).</li>
+                    <li class="fragment">Evaluar el modelo en el <i>test set</i> para estimar el error de generalización.</li></ul>
+                </section>
+
+                <section><h4>Selección de modelo, ajuste de hiperparámetros</h4>
+                <ul><li class="fragment">Si el conjuto de validación es muy pequeño: evaluación del modelo será imprecisa.</li>
+                    <li class="fragment">Si el conjuto de validación es muy grande: conjunto de entrenamiento será muy pequeño.</li>
+                    <li class="fragment">Se puede aliviar estos problemos con validación cruzada (<i>cross-validation</i>):</li>
+                    <ul><li class="fragment">hay varios conjuntos pequeños de validación.</li>
+                        <li class="fragment">El modelo está evaluado una vez por cada conjunto de validación, después de estar entrenado con el resto de los datos de entrenamiento.</li>
+                        <li class="fragment">Se puede promediar los resultados de cada validación en el proceso de <i>cross-validation</i> para encontrar una medición del rendimiento del modelo.</li>
+                        <li class="fragment">La desventaja: el tiempo de entrenamiento está multiplicado por el número de <i>validation sets</i>.</li></ul></ul>
+                </section>
+
+                <section><h4>No free lunch</h4>
+                <ul><li class="fragment">La elección de un modelo está basado en <b>suposiciones</b> sobre los datos.</li>
+                    <li class="fragment">Por ejemplo, usando regresión lineal, suponemos que los datos son fundamentalmente lineales, y las desviaciones de linealidad viene de ruido que se puede ignorar.</li>
+                    <li class="fragment">Se puede demostrar (Wolpert 1996) que, sin <b>ningúna</b> suposición sobre los datos, no hay motivo por preferir un modelo en vez de otro.</li>
+                    <li class="fragment">¿Qué quiere decir eso? En algunos casos un modelo lineal es el mejor. En otros casos sería una red neuronal.</li>
+                    <li class="fragment">El punto es que no podemos simplemente usar un modelo (por ejemplo una red neuronal) para <b>cualquier</b> conjunto de datos. Tenemos que evaluar los modelos, y decidir cuál es mejor.</li></ul>
+                </section>
+
+			</div>
+		</div>
+
+<script>
+
+require(
+    {
+      // it makes sense to wait a little bit when you are loading
+      // reveal from a cdn in a slow connection environment
+      waitSeconds: 15
+    },
+    [
+      "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/lib/js/head.min.js",
+      "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/js/reveal.js"
+    ],
+
+    function(head, Reveal){
+
+        // Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+
+            transition: "slide",
+
+            // Optional libraries used to extend on reveal.js
+            dependencies: [
+                { src: "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/plugin/highlight/highlight.js" }
+            ]
+        });
+
+        var update = function(event){
+          if(MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
+            MathJax.Hub.Rerender(Reveal.getCurrentSlide());
+          }
+        };
+
+        Reveal.addEventListener('slidechanged', update);
+
+        function setScrollingSlide() {
+            var scroll = false
+            if (scroll === true) {
+              var h = $('.reveal').height() * 0.95;
+              $('section.present').find('section')
+                .filter(function() {
+                  return $(this).height() > h;
+                })
+                .css('height', 'calc(95vh)')
+                .css('overflow-y', 'scroll')
+                .css('margin-top', '20px');
+            }
+        }
+
+        // check and set the scrolling slide every time the slide change
+        Reveal.addEventListener('slidechanged', setScrollingSlide);
+
+    }
+
+);
+</script>
+	</body>
+</html>
